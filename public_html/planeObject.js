@@ -198,6 +198,12 @@ PlaneObject.prototype.getMarkerColor = function() {
                 h = ColorByAlt.ground.h;
                 s = ColorByAlt.ground.s;
                 l = ColorByAlt.ground.l;
+	} else if (!ShowAltitudesByColor) {
+		if (!this.position_from_mlat) {
+                	return '#80FF80';
+		} else {
+			return '#8080FF';
+		}
         } else {
                 s = ColorByAlt.air.s;
                 l = ColorByAlt.air.l;
