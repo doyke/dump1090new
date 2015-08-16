@@ -188,6 +188,12 @@ PlaneObject.prototype.getMarkerColor = function() {
         if (this.squawk in SpecialSquawks)
                 return SpecialSquawks[this.squawk].markerColor;
 
+        if (!ShowAltitudesByColor)
+                if (this.position_from_mlat)
+                        return "#8080ff";
+                else
+                        return "#80ff80";
+
         var h, s, l;
 
         if (this.altitude === null) {
@@ -198,12 +204,6 @@ PlaneObject.prototype.getMarkerColor = function() {
                 h = ColorByAlt.ground.h;
                 s = ColorByAlt.ground.s;
                 l = ColorByAlt.ground.l;
-	} else if (!ShowAltitudesByColor) {
-		if (!this.position_from_mlat) {
-                	return '#80FF80';
-		} else {
-			return '#8080FF';
-		}
         } else {
                 s = ColorByAlt.air.s;
                 l = ColorByAlt.air.l;
